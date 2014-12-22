@@ -1,9 +1,17 @@
 require 'mosca'
+require 'rack/cors'
 
 BROKER = "localhost"
 
 def mqtt_client
   @mqtt_client ||= Mosca::Client.new broker: BROKER
+end
+
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '/publish'
+  end
 end
 
 app = Proc.new do |env|
