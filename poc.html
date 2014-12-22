@@ -50,7 +50,7 @@
 
         $temp.innerHTML = temp;
 
-        $.get("http://localhost:9292/publish", {topic: "temperature", payload: temp});
+        $.post("http://localhost:9292/publish", {topic: "temperature", payload: temp});
     }
 
 </script>
