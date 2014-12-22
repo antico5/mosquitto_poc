@@ -16,7 +16,7 @@ end
 
 app = Proc.new do |env|
   request = Rack::Request.new env
-  if request.path =~ /publish/ && request.params["payload"] && request.params["topic"]
+  if request.path =~ /publish/ && request.params["payload"] && request.params["topic"] && request.request_method == "POST"
     mqtt_client.publish request.params["payload"], topic_out: request.params["topic"]
     [200, {}, []]
   else
