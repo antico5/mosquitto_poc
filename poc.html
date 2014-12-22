@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <title>title</title>
+
+    <style>
+    body{
+        background: #204B6B;
+        color: #FFFFFF;
+        font-size: 20px;
+    }
+    .container{
+        width: 300px;
+        margin: auto;
+    }
+    #temp{
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        border: 1px solid #FFF;
+        line-height: 100px;
+        text-align: center;
+    }
+    button{
+        border-radius: 10px;
+        margin: 10px 50px 0 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="temp">32</div>
+        <button id="minus" onclick="updateTemp(-1)">-</button>
+        <button id="plus" onclick="updateTemp(+1)">+</button>
+    </div>
+</body>
+</html>
+
+
+<script>
+    function updateTemp(delta) {
+        var $temp = document.getElementById('temp');
+        var temp = parseInt($temp.innerHTML, 10);
+
+        temp += delta;
+
+        $temp.innerHTML = temp;
+
+        $.get("http://localhost:9292/publish", {topic: "temperature", payload: temp});
+    }
+
+</script>
