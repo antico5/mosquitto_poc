@@ -1,0 +1,18 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    json (1.8.1)
+    mosca (0.0.9)
+      json (~> 1.8.1)
+      mqtt (~> 0.3, >= 0.3.1)
+    mqtt (0.3.1)
+    rack (1.6.0)
+    rack-cors (0.3.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mosca (= 0.0.9)
+  rack
+  rack-cors
